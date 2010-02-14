@@ -256,6 +256,9 @@ public class Workspace extends ViewGroup implements DropTarget, DragSource, Drag
         mPreviousIndicator.setLevel(mCurrentScreen);
         mNextIndicator.setLevel(mCurrentScreen);
         scrollTo(mCurrentScreen * getWidth(), 0);
+        mPreviousIndicator.setLevel(currentScreen);
+        mNextIndicator.setLevel(currentScreen);
+        updateWallpaperOffset();
         invalidate();
     }
 
