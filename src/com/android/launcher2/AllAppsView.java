@@ -1146,6 +1146,8 @@ public class AllAppsView extends RSSurfaceView
             mIcons = new Allocation[count];
             mIconIds = new int[allocCount];
             mAllocIconIds = Allocation.createSized(mRS, Element.USER_I32(mRS), allocCount);
+	    if (mLauncher.isInitialCreation())
+	        Allocation.createAllocationList(mRS, count);
 
             mLabels = new Allocation[count];
             mLabelIds = new int[allocCount];
@@ -1235,6 +1237,7 @@ public class AllAppsView extends RSSurfaceView
             System.arraycopy(mLabels, index, mLabels, dest, count);
             System.arraycopy(mLabelIds, index, mLabelIds, dest, count);
 
+	    Allocation.addToAllocation(mRS, index);
             createAppIconAllocations(index, item);
             uploadAppIcon(index, item);
             mRollo.mState.iconCount++;
@@ -1251,6 +1254,8 @@ public class AllAppsView extends RSSurfaceView
             System.arraycopy(mIconIds, src, mIconIds, index, count);
             System.arraycopy(mLabels, src, mLabels, index, count);
             System.arraycopy(mLabelIds, src, mLabelIds, index, count);
+
+	    Allocation.removeFromAllocation(mRS, index);
 
             mRollo.mState.iconCount--;
             final int last = mState.iconCount;
