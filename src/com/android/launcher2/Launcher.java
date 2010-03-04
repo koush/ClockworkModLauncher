@@ -1849,6 +1849,7 @@ public final class Launcher extends Activity
     }
 
     void showAllApps(boolean animated) {
+        mWorkspace.hideWallpaper(true);
         mAllAppsGrid.zoom(1.0f, animated);
 
         mAllAppsGrid.setFocusable(true);
