@@ -927,7 +927,7 @@ public final class Launcher extends Activity
             outState.putLong(RUNTIME_STATE_PENDING_FOLDER_RENAME_ID, mFolderInfo.id);
         }
 
-	if (currentOrientation != getWindowManager().getDefaultDisplay().getOrientation())
+	if (currentOrientation != getWindowManager().getDefaultDisplay().getOrientation() && mAllAppsGrid.IsAllocationListCreated())
 	    outState.putBoolean(RUNTIME_INITIAL_CREATION, false);
     }
 
@@ -1852,7 +1852,8 @@ public final class Launcher extends Activity
     }
 
     void showAllApps(boolean animated) {
-        mWorkspace.hideWallpaper(true);
+	if (animated)
+            mWorkspace.hideWallpaper(true);
         mAllAppsGrid.zoom(1.0f, animated);
 
         mAllAppsGrid.setFocusable(true);
@@ -1901,6 +1902,7 @@ public final class Launcher extends Activity
         if (mAllAppsGrid.isVisible()) {
             mAllAppsGrid.zoom(0.0f, animated);
             mAllAppsGrid.setFocusable(false);
+            mWorkspace.show();
             mWorkspace.getChildAt(mWorkspace.getCurrentScreen()).requestFocus();
         }
     }
