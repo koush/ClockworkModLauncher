@@ -1903,7 +1903,6 @@ public final class Launcher extends Activity
             mWorkspace.hideWallpaper(false);
             mAllAppsGrid.zoom(0.0f, animated);
             mAllAppsGrid.setFocusable(false);
-            mWorkspace.show();
             mWorkspace.getChildAt(mWorkspace.getCurrentScreen()).requestFocus();
         }
     }

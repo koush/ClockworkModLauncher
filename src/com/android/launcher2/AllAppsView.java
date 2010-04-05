@@ -23,6 +23,7 @@ import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.PixelFormat;
 import android.graphics.Rect;
+import android.graphics.Bitmap.Config;
 import android.os.SystemClock;
 import android.renderscript.Allocation;
 import android.renderscript.Dimension;
@@ -1153,15 +1154,6 @@ public class AllAppsView extends RSSurfaceView
             mIcons = new Allocation[count];
             mIconIds = new int[allocCount];
             mAllocIconIds = Allocation.createSized(mRS, Element.USER_I32(mRS), allocCount);
-	    if (mLauncher.isInitialCreation()) {
-	        Allocation.createAllocationList(mRS, count);
-		if (count > 0)
-		    mCreatedList = true;
-            }
-	    else {
-		if (count > 0)
-		    mCreatedList = true;
-            }
 
             mLabels = new Allocation[count];
             mLabelIds = new int[allocCount];
@@ -1193,10 +1185,49 @@ public class AllAppsView extends RSSurfaceView
             }
         }
 
+        int rsFindHighBit(int val)
+        {
+            int bit = 0;
+            while(val > 1) {
+                bit++;
+                val>>=1;
+            }
+            return bit;
+        }
+        
+        boolean isPow2(int val)
+        {
+            return (val & (val-1)) == 0;
+        }
+
+        int higherPow2(int v)
+        {
+            if (isPow2(v)) {
+                return v;
+            }
+            return 1 << (rsFindHighBit(v) + 1);
+        }
+
+
+        private Bitmap fixBitmap(Bitmap b) {
+        	int w = b.getWidth();
+        	int h = b.getHeight();
+        	if (isPow2(w) && isPow2(h))
+        		return b;
+        	int w2 = higherPow2(w);
+        	int h2 = higherPow2(h);
+        	Config config = b.getConfig();
+        	Bitmap ret = Bitmap.createBitmap(w2, h2, config);
+        	Canvas c = new Canvas(ret);
+        	c.drawColor(0);
+        	c.drawBitmap(b, null, new Rect(0, 0, w2, h2), null);
+        	return ret;
+        }
+        
         private void createAppIconAllocations(int index, ApplicationInfo item) {
-            mIcons[index] = Allocation.createFromBitmap(mRS, item.iconBitmap,
+            mIcons[index] = Allocation.createFromBitmap(mRS, fixBitmap(item.iconBitmap),
                     Element.RGBA_8888(mRS), true);
-            mLabels[index] = Allocation.createFromBitmap(mRS, item.titleBitmap,
+            mLabels[index] = Allocation.createFromBitmap(mRS, fixBitmap(item.titleBitmap),
                     Element.A_8(mRS), true);
             mIconIds[index] = mIcons[index].getID();
             mLabelIds[index] = mLabels[index].getID();
@@ -1251,7 +1282,6 @@ public class AllAppsView extends RSSurfaceView
             System.arraycopy(mLabels, index, mLabels, dest, count);
             System.arraycopy(mLabelIds, index, mLabelIds, dest, count);
 
-	    Allocation.addToAllocation(mRS, index);
             createAppIconAllocations(index, item);
             uploadAppIcon(index, item);
             mRollo.mState.iconCount++;
@@ -1268,8 +1298,6 @@ public class AllAppsView extends RSSurfaceView
             System.arraycopy(mIconIds, src, mIconIds, index, count);
             System.arraycopy(mLabels, src, mLabels, index, count);
             System.arraycopy(mLabelIds, src, mLabelIds, index, count);
-
-	    Allocation.removeFromAllocation(mRS, index);
 
             mRollo.mState.iconCount--;
             final int last = mState.iconCount;
