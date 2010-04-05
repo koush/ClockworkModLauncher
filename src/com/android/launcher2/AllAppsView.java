@@ -1335,17 +1335,23 @@ public class AllAppsView extends RSSurfaceView
         void initTouchState() {
             int width = getWidth();
             int height = getHeight();
-            if (getWidth()>getHeight()) {
+            if (width > height) {
             	Defines.COLUMNS_PER_PAGE = 6;
             }
             else {
             	Defines.COLUMNS_PER_PAGE = 4;
             }
-            int cellHeight = 145;//iconsSize / Defines.ROWS_PER_PAGE;
             int cellWidth = width / Defines.COLUMNS_PER_PAGE;
+            int cellHeight = cellWidth + 25;
+            if (width > height) {
+                cellHeight = cellWidth;
+            }
 
             for (int i = 0; i < (Defines.ROWS_PER_PAGE+2); i++) {
                 mTouchYBorders[i] = i * cellHeight;
+                if (width < height) {
+                	mTouchYBorders[i] += 50;
+                }
             }
 
             for (int i = 0; i < (Defines.COLUMNS_PER_PAGE+1); i++) {
