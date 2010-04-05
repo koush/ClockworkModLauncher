@@ -926,9 +926,6 @@ public final class Launcher extends Activity
             outState.putBoolean(RUNTIME_STATE_PENDING_FOLDER_RENAME, true);
             outState.putLong(RUNTIME_STATE_PENDING_FOLDER_RENAME_ID, mFolderInfo.id);
         }
-
-	if (currentOrientation != getWindowManager().getDefaultDisplay().getOrientation() && mAllAppsGrid.IsAllocationListCreated())
-	    outState.putBoolean(RUNTIME_INITIAL_CREATION, false);
     }
 
     @Override
