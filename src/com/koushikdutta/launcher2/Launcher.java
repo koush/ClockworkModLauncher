@@ -82,7 +82,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.DataInputStream;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 /**
  * Default launcher application.

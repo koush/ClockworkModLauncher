@@ -54,7 +54,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.Comparator;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 
 public class AllAppsView extends RSSurfaceView

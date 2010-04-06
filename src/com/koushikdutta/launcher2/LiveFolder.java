@@ -29,7 +29,7 @@ import android.database.Cursor;
 
 import java.lang.ref.WeakReference;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 public class LiveFolder extends Folder {
     private AsyncTask<LiveFolderInfo,Void,Cursor> mLoadingTask;

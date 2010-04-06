@@ -53,7 +53,7 @@ import java.util.ArrayList;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParser;
 import com.android.internal.util.XmlUtils;
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 import com.koushikdutta.launcher2.LauncherSettings.Favorites;
 
 public class LauncherProvider extends ContentProvider {
@@ -64,10 +64,10 @@ public class LauncherProvider extends ContentProvider {
     
     private static final int DATABASE_VERSION = 8;
 
-    static final String AUTHORITY = "com.android.launcher2.settings";
+    static final String AUTHORITY = "com.koushikdutta.launcher2.settings";
     
-    static final String EXTRA_BIND_SOURCES = "com.android.launcher2.settings.bindsources";
-    static final String EXTRA_BIND_TARGETS = "com.android.launcher2.settings.bindtargets";
+    static final String EXTRA_BIND_SOURCES = "com.koushikdutta.launcher2.settings.bindsources";
+    static final String EXTRA_BIND_TARGETS = "com.koushikdutta.launcher2.settings.bindtargets";
 
     static final String TABLE_FAVORITES = "favorites";
     static final String PARAMETER_NOTIFY = "notify";

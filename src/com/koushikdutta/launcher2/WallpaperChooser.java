@@ -38,7 +38,7 @@ import android.widget.ImageView;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 public class WallpaperChooser extends Activity implements AdapterView.OnItemSelectedListener,
         OnClickListener {

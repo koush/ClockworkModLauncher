@@ -26,7 +26,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 /**
  * GridView adapter to show the list of applications and shortcuts

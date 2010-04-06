@@ -121,7 +121,7 @@
         <!-- The settings provider contains Home's data, like the workspace favorites -->
         <provider
             android:name="LauncherProvider"
-            android:authorities="com.android.launcher2.settings"
+            android:authorities="com.koushikdutta.launcher2.settings"
             android:writePermission="com.android.launcher.permission.WRITE_SETTINGS"
             android:readPermission="com.android.launcher.permission.READ_SETTINGS" />
 

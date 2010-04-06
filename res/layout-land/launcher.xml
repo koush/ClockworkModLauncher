@@ -14,15 +14,15 @@
      limitations under the License.
 -->
 
-<com.android.launcher2.DragLayer
+<com.koushikdutta.launcher2.DragLayer
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:launcher="http://schemas.android.com/apk/res/com.android.launcher2"
+    xmlns:launcher="http://schemas.android.com/apk/res/com.koushikdutta.launcher2"
 
     android:id="@+id/drag_layer"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent">
 
-    <com.android.launcher2.AllAppsView
+    <com.koushikdutta.launcher2.AllAppsView
         android:id="@+id/all_apps_view"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -35,7 +35,7 @@
         android:numColumns="4" />
 
     <!-- The workspace contains 3 screens of cells -->
-    <com.android.launcher2.Workspace
+    <com.koushikdutta.launcher2.Workspace
         android:id="@+id/workspace"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -49,7 +49,7 @@
         <include android:id="@+id/cell4" layout="@layout/workspace_screen" />
         <include android:id="@+id/cell5" layout="@layout/workspace_screen" />
 
-    </com.android.launcher2.Workspace>
+    </com.koushikdutta.launcher2.Workspace>
 
     <ImageView
         android:id="@+id/previous_screen"
@@ -79,7 +79,7 @@
         android:focusable="true"
         android:clickable="true" />
 
-    <com.android.launcher2.HandleView
+    <com.koushikdutta.launcher2.HandleView
         android:id="@+id/all_apps_button"
         android:layout_width="@dimen/button_bar_height"
         android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
         launcher:direction="vertical"
         />
 
-    <com.android.launcher2.DeleteZone
+    <com.koushikdutta.launcher2.DeleteZone
         android:id="@+id/delete_zone"
         android:layout_width="@dimen/button_bar_height"
         android:layout_height="fill_parent"
@@ -105,4 +105,4 @@
         launcher:direction="vertical"
         />
 
-</com.android.launcher2.DragLayer>
+</com.koushikdutta.launcher2.DragLayer>

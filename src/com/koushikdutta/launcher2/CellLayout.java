@@ -32,7 +32,7 @@ import android.app.WallpaperManager;
 
 import java.util.ArrayList;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 public class CellLayout extends ViewGroup {
     private boolean mPortrait;

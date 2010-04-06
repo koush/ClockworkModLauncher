@@ -50,7 +50,7 @@ import java.util.Collections;
 import java.util.HashMap;
 import java.util.List;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 /**
  * Maintains in-memory state of the Launcher. It is expected that there should be only one

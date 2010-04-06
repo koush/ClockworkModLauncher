@@ -16,7 +16,7 @@
 
 package com.koushikdutta.launcher2;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;

@@ -43,7 +43,7 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import com.android.launcher2.R;
+import com.koushikdutta.launcher2.R;
 
 /**
  * The workspace is a wide area with a wallpaper and a finite number of screens. Each
